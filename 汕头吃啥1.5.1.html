@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>汕头干饭指南</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#faf5f0;--tx:#4a2c2a;--cd:#fff8f0;--pm:#c62828;--sb:#f5ebe0;--hl:#e0d0c0;--tg:#8b7355;--ib:#efe5d8}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;-webkit-tap-highlight-color:transparent}
+#app{max-width:480px;margin:0 auto;padding:16px 14px 80px}
+.card{background:var(--cd);border-radius:14px;padding:16px 18px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.tt{font-size:16px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.tt .badge{font-size:11px;background:var(--pm);color:#fff;padding:2px 7px;border-radius:8px;font-weight:600;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.greeting{margin-bottom:14px}
+.gm{font-size:22px;font-weight:800;margin-bottom:4px}
+.gr{font-size:13px;color:var(--tg);margin-bottom:4px}
+.gtp{font-size:13px;color:var(--pm);font-weight:500;padding:6px 10px;background:var(--sb);border-radius:8px;margin-top:6px}
+.wr{display:flex;gap:12px;align-items:center;font-size:14px;flex-wrap:wrap}
+.wr span{display:flex;align-items:center;gap:3px}
+.wa{font-size:13px;color:var(--pm);margin-top:8px;font-weight:500}
+.sbn{display:flex;align-items:flex-start;gap:10px;background:var(--sb);border-radius:12px;padding:12px 14px;margin-bottom:12px;cursor:pointer;transition:background .2s}
+.sbn:active{background:var(--hl)}
+.sbe{font-size:24px;flex-shrink:0}
+.sbn2{font-weight:700;font-size:14px}
+.sbd{font-size:13px;color:var(--tg)}
+.sbt{font-size:12px;color:var(--pm);margin-top:4px;font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border-radius:10px;border:none;font-size:15px;font-weight:600;cursor:pointer;transition:opacity .15s;background:var(--sb);color:var(--tx)}
+.btn:active{opacity:.7}
+.btn-p{background:var(--pm);color:#fff}
+.btn-b{width:100%}
+.btn-sm{padding:7px 12px;font-size:13px;border-radius:8px}
+.btn-g{margin:4px}
+.hpc{text-align:center;margin-bottom:14px}
+.hpe{font-size:48px;margin-bottom:6px}
+.hpt{font-size:18px;font-weight:700;margin-bottom:8px}
+.hpb{font-size:14px;line-height:1.7;white-space:pre-line;text-align:left;background:var(--sb);padding:12px;border-radius:10px;margin-bottom:8px}
+.hptp{font-size:13px;color:var(--pm);font-weight:500;margin-bottom:12px}
+.hpr{margin-bottom:12px}
+.hpr-title{font-size:13px;color:var(--tg);margin-bottom:6px}
+.hpr-bar{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.hpr-pct{font-size:13px;font-weight:700;min-width:32px}
+.hpr-track{flex:1;height:6px;background:var(--sb);border-radius:3px;overflow:hidden}
+.hpr-fill{height:100%;border-radius:3px;transition:width .3s}
+.hpr-fill.g{background:#4caf50}.hpr-fill.o{background:#ff9800}.hpr-fill.b{background:#f44336}
+.hpr-items{font-size:13px;color:var(--tg);margin-left:40px}
+.qc{text-align:center}
+.qt{font-size:16px;font-weight:700;margin-bottom:14px}
+.qprog{font-size:12px;color:var(--tg);margin-bottom:8px}
+.qopts{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.rc{text-align:center}
+.rce{font-size:56px;margin-bottom:8px}
+.rcn{font-size:22px;font-weight:800;margin-bottom:12px}
+.rco{margin-top:14px;text-align:left}
+.rco-t{font-size:13px;color:var(--tg);margin-bottom:8px}
+.rco-i{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:var(--sb);border-radius:8px;margin:3px;font-size:13px;cursor:pointer;transition:background .15s}
+.rco-i:active{background:var(--hl)}
+.rc-ok{font-size:14px;color:#4caf50;font-weight:600;margin-top:10px}
+.mi{position:relative;margin-bottom:8px}
+.mi input{width:100%;padding:12px 14px;border:2px solid var(--ib);border-radius:10px;font-size:16px;background:var(--cd);color:var(--tx);outline:none;transition:border-color .2s}
+.mi input:focus{border-color:var(--pm)}
+.msg{position:absolute;top:100%;left:0;right:0;background:var(--cd);border:2px solid var(--ib);border-top:none;border-radius:0 0 10px 10px;z-index:10;max-height:200px;overflow-y:auto}
+.msg-i{padding:10px 14px;cursor:pointer;font-size:14px;transition:background .1s}
+.msg-i:active{background:var(--sb)}
+.mil{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.mil-i{display:flex;align-items:center;gap:4px;padding:6px 10px;background:var(--sb);border-radius:8px;font-size:13px}
+.mil-x{cursor:pointer;font-weight:700;color:var(--pm);margin-left:2px}
+.mso{font-size:14px;color:#4caf50;font-weight:600;text-align:center;padding:8px;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.fh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.fc{font-size:13px;color:var(--tg);cursor:pointer}
+.fgs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.fg-i{display:flex;align-items:center;gap:4px;padding:8px 12px;background:var(--sb);border-radius:10px;cursor:pointer;transition:all .15s;font-size:14px}
+.fg-i:active{background:var(--hl)}
+.fg-i.sel{background:var(--pm);color:#fff}
+.fg-i.new{animation:fadeIn .4s}
+.fl{max-height:400px;overflow-y:auto}
+.fi{display:flex;align-items:center;padding:10px 0;border-bottom:1px solid var(--sb);gap:8px;flex-wrap:wrap}
+.fi:last-child{border-bottom:none}
+.fin{font-weight:600;flex:1;min-width:80px;font-size:14px}
+.fi-e{font-size:18px;margin-right:4px}
+.tg{display:inline-flex;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:500;cursor:pointer;background:var(--sb);color:var(--tg);margin:1px;transition:all .15s}
+.tg:active{opacity:.7}
+.tg.pm{background:var(--pm);color:#fff}
+.fi-del{font-size:12px;color:#f44336;cursor:pointer;padding:4px}
+.fadd{display:flex;gap:8px;margin-top:10px;align-items:center}
+.fadd input{flex:1;padding:10px 12px;border:2px solid var(--ib);border-radius:10px;font-size:15px;background:var(--cd);color:var(--tx);outline:none}
+.fadd input:focus{border-color:var(--pm)}
+.fdist{padding:8px 12px;background:var(--sb);border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap}
+.cc{margin-top:10px;padding-top:10px;border-top:1px solid var(--sb)}
+.ci{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ci input{flex:1;padding:8px 10px;border:2px solid var(--ib);border-radius:8px;font-size:13px;background:var(--cd);color:var(--tx);outline:none}
+.cl{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.cl-i{padding:6px 10px;background:var(--sb);border-radius:8px;font-size:12px;cursor:pointer}
+.cl-i:active{background:var(--hl)}
+.cl-d{color:#f44336;margin-left:4px}
+.pr{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.pr label{font-size:14px;font-weight:500;min-width:50px}
+.pr .btn-sm{flex:1}
+.tgl{display:flex;flex-wrap:wrap;gap:8px}
+.tgl-i{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 14px;background:var(--sb);border-radius:10px;cursor:pointer;transition:all .15s;font-size:13px}
+.tgl-i:active{background:var(--hl)}
+.tgl-i.act{background:var(--pm);color:#fff}
+.tgl-e{font-size:22px}
+.mc2{padding:10px 12px;background:var(--sb);border-radius:10px;margin-bottom:8px}
+.mth2{font-size:14px;font-weight:700;margin-bottom:6px}
+.mst2{font-size:13px;line-height:1.7;color:var(--tg);white-space:pre-line}
+.mt{font-size:13px;color:var(--pm);cursor:pointer;font-weight:500;margin-top:6px}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.sc{background:var(--sb);border-radius:10px;padding:12px;text-align:center}
+.sv{font-size:22px;font-weight:800}
+.sl{font-size:12px;color:var(--tg);margin-top:2px}
+.sf{margin-top:10px}
+.sf-i{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--sb)}
+.sf-i:last-child{border-bottom:none}
+.sf-r{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.sf-r.g{background:#4caf50}.sf-r.o{background:#ff9800}.sf-r.b{background:#f44336}
+.sf-n{font-size:14px;flex:1}
+.sf-t{font-size:12px;color:var(--tg)}
+.sf-d{font-size:12px;color:#f44336;cursor:pointer;padding:2px 6px}
+.hc{max-height:400px;overflow-y:auto}
+.he{display:flex;align-items:flex-start;gap:8px;padding:10px 0;border-bottom:1px solid var(--sb)}
+.he:last-child{border-bottom:none}
+.he-e{font-size:18px;flex-shrink:0;margin-top:2px}
+.he-c{flex:1}
+.he-n{font-size:14px;font-weight:600}
+.he-m{font-size:12px;color:var(--tg)}
+.he-x{font-size:12px;color:#f44336;cursor:pointer;padding:2px 6px;flex-shrink:0}
+.clg-i{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--sb)}
+.clg-i:last-child{border-bottom:none}
+.clg-v{font-weight:700;font-size:14px;margin-bottom:4px}
+.clg-c{font-size:13px;color:var(--tg);line-height:1.6}
+.clg-c span{margin-right:8px}
+.clg-c .f{color:#4caf50}.clg-c .x{color:#f44336}.clg-c .r{color:#2196f3}.clg-c .p{color:#9c27b0}
+.dbr{display:flex;gap:10px}
+.dbt{flex:1;padding:12px;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s}
+.dbt:active{opacity:.7}
+.dbt.ex{background:#e8f5e9;color:#2e7d32}
+.dbt.im{background:#e3f2fd;color:#1565c0}
+.iff{display:none}
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;display:flex;background:var(--cd);border-top:1px solid var(--sb);z-index:100;padding:6px 0 env(safe-area-inset-bottom)}
+.bnav-i{flex:1;text-align:center;padding:8px 0;font-size:12px;cursor:pointer;color:var(--tg);transition:color .15s}
+.bnav-i.act{color:var(--pm);font-weight:700}
+.bnav-e{font-size:20px;display:block;margin-bottom:2px}
+.tab{display:flex;gap:8px;margin-bottom:10px}
+.tab-i{padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;background:var(--sb);color:var(--tg);transition:all .15s}
+.tab-i.act{background:var(--pm);color:#fff}
+/* 说明书样式 */
+.guide-sec{margin-bottom:14px}
+.guide-sec:last-child{margin-bottom:0}
+.guide-t{font-size:14px;font-weight:700;margin-bottom:6px}
+.guide-c{font-size:13px;line-height:1.6;color:var(--tg)}
+.guide-c b{color:var(--pm);font-weight:600}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- ===== 首页 ===== -->
+<div v-if="page==='home'">
+  <div class="greeting">
+    <div class="gm">{{greetingEmoji}} {{greetingText}}</div>
+    <div class="gr">{{rankInfo}}</div>
+    <div class="gtp" v-if="modeTip">💡 {{modeTip}}</div>
+  </div>
+
+  <div class="card" v-if="!weather.loading">
+    <div class="tt">🌤️ 汕头实况</div>
+    <div class="wr">
+      <span>🌡️ {{weather.temp}}°C</span>
+      <span>💧 {{weather.humidity}}%</span>
+      <span>{{weather.condition}}</span>
+    </div>
+    <div class="wa" v-if="weather.advice">{{weather.advice}}</div>
+  </div>
+
+  <div class="sbn" v-if="seasonBanner" @click="page='me'">
+    <span class="sbe">{{seasonBanner.emoji}}</span>
+    <div>
+      <span class="sbn2">{{seasonBanner.title}}</span><br>
+      <span class="sbd">{{seasonBanner.desc}}</span>
+      <div class="sbt" v-if="seasonBanner.tip">💡 {{seasonBanner.tip}}</div>
+    </div>
+  </div>
+
+  <!-- 决策流：空闲 -->
+  <div class="card" v-if="phase==='idle'">
+    <button class="btn btn-p btn-b" @click="startDecision" style="font-size:18px;padding:16px">🎯 开始选饭</button>
+  </div>
+
+  <!-- 决策流：健康面板 -->
+  <div class="card" v-if="phase==='health'">
+    <div class="hpc">
+      <div class="hpe">{{healthPanel.emoji}}</div>
+      <div class="hpt">{{healthPanel.title}}</div>
+    </div>
+    <div class="hpb">{{healthPanel.body}}</div>
+    <div class="hptp" v-if="healthPanel.tip">💡 {{healthPanel.tip}}</div>
+    <div class="hpr" v-if="healthPanel.recommendations&&healthPanel.recommendations.length">
+      <div class="hpr-title">📊 食物推荐指数</div>
+      <div v-for="rec in healthPanel.recommendations" :key="rec.pct" style="margin-bottom:8px">
+        <div class="hpr-bar">
+          <span class="hpr-pct" :style="{color:rec.pct>=60?'#4caf50':rec.pct>=35?'#ff9800':'#f44336'}">{{rec.pct}}%</span>
+          <div class="hpr-track"><div class="hpr-fill" :class="rec.pct>=60?'g':rec.pct>=35?'o':'b'" :style="{width:rec.pct+'%'}"></div></div>
+        </div>
+        <div class="hpr-items">{{rec.items.map(function(i){return i.emoji+i.name}).join(' · ')}}</div>
+      </div>
+    </div>
+    <div v-if="healthPanel.fallback" style="font-size:13px;color:var(--tg);margin-bottom:10px">🫙 实在不知道就：{{healthPanel.fallback}}</div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-p" style="flex:1" @click="goToQuestions">继续选饭 →</button>
+      <button class="btn" @click="resetDecision">返回</button>
+    </div>
+  </div>
+
+  <!-- 决策流：问答 -->
+  <div class="card" v-if="phase==='decide'">
+    <div class="qc">
+      <div class="qprog">第 {{questionIndex+1}} / {{questions.length}} 问 · 剩余 {{candidates.length}} 种</div>
+      <div class="qt">{{currentQuestion.text}}</div>
+      <div class="qopts">
+        <button class="btn btn-g" v-for="opt in currentQuestion.options" :key="opt" @click="answerQuestion(opt)">{{opt}}</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 决策流：结果 -->
+  <div class="card" v-if="phase==='result'">
+    <div class="rc">
+      <template v-if="resultAccepted">
+        <div style="font-size:48px">✅</div>
+        <div class="rc-ok">已记录！好好干饭 💪</div>
+      </template>
+      <template v-else>
+        <div class="rce">{{resultEmoji}}</div>
+        <div class="rcn">{{finalResult}}</div>
+        <div style="display:flex;gap:8px;justify-content:center">
+          <button class="btn btn-p" @click="acceptResult">就吃这个！</button>
+          <button class="btn" @click="rejectResult">不想吃</button>
+        </div>
+      </template>
+    </div>
+    <div class="rco" v-if="otherChoices.length&&!resultAccepted">
+      <div class="rco-t">其他选择：</div>
+      <span class="rco-i" v-for="c in otherChoices" :key="c.name" @click="switchToChoice(c)">{{c.emoji||getEmoji(c.name)}} {{c.name}}</span>
+    </div>
+    <div style="text-align:center;margin-top:10px" v-if="resultAccepted">
+      <button class="btn btn-sm" @click="resetDecision">再选一次</button>
+    </div>
+  </div>
+
+  <!-- 手动记录 -->
+  <div class="card">
+    <div class="tt">📝 手动记录</div>
+    <div class="mi">
+      <input v-model="manualInput" @keyup.enter="addManualCustom" @focus="manualFocused=true" @blur="blurManual" placeholder="输入食物名称...">
+      <div class="msg" v-if="manualFocused&&manualSuggestions.length">
+        <div class="msg-i" v-for="s in manualSuggestions" :key="s.name" @mousedown.prevent="addManualSuggestion(s)">{{s.emoji||getEmoji(s.name)}} {{s.name}}</div>
+      </div>
+    </div>
+    <div class="mil" v-if="manualItems.length">
+      <span class="mil-i" v-for="(item,idx) in manualItems" :key="item.name">{{item.emoji||getEmoji(item.name)}} {{item.name}} <span class="mil-x" @click="removeManualItem(idx)">×</span></span>
+    </div>
+    <button class="btn btn-p btn-sm" v-if="manualItems.length" @click="saveManualMeal">✅ 记录这顿</button>
+    <div class="mso" v-if="manualSaveOk">✅ 已记录！</div>
+  </div>
+
+  <!-- 候选库 -->
+  <div class="card">
+    <div class="fh">
+      <div class="tt" style="margin-bottom:0">🍽️ 候选库 ({{foods.length}})</div>
+      <span class="fc" @click="showManage=!showManage">{{showManage?'收起':'管理'}}</span>
+    </div>
+    <div class="fgs">
+      <span class="fg-i" v-for="g in foodGroups" :key="g.key" :class="{sel:isGroupSelected(g.key),new:g.isNew}" @click="toggleGroupSelect(g.key)">{{g.emoji}} {{g.key==='cat_default'?'其他':''}}</span>
+    </div>
+    <div style="font-size:13px;color:var(--tg);margin-bottom:8px" v-if="selectedCount">已选 {{selectedCount}} 种</div>
+
+    <!-- 已选食物详情 -->
+    <div v-if="selectedCount" style="margin-bottom:10px">
+      <div class="fl">
+        <div class="fi" v-for="(food,idx) in foods" :key="idx" v-show="selectedFoods[idx]">
+          <span class="fi-e">{{getEmoji(food.name)}}</span>
+          <span class="fin">{{food.name}}</span>
+          <span class="tg" v-for="dim in ['品类','荤素','饱腹','形态','口味','距离','耗时']" :key="dim" @click="cycleTag(idx,dim)" :class="{pm:food[dim]&&food[dim]!==TAG_DEFAULTS[dim]}">{{food[dim]||'适中'}}</span>
+          <span class="fi-del" @click="removeFood(idx)">删除</span>
+        </div>
+      </div>
+      <div class="cc" v-if="selectedCount>=2">
+        <div class="ci"><input v-model="comboName" placeholder="套餐名称" @keyup.enter="saveCombo"><button class="btn btn-sm btn-p" @click="saveCombo">保存套餐</button></div>
+      </div>
+    </div>
+
+    <!-- 管理模式 -->
+    <div v-if="showManage">
+      <div class="fl">
+        <div class="fi" v-for="(food,idx) in foods" :key="idx">
+          <span class="fi-e">{{getEmoji(food.name)}}</span>
+          <span class="fin">{{food.name}}</span>
+          <span class="tg" v-for="dim in ['品类','荤素','饱腹','形态','口味','距离','耗时']" :key="dim" @click="cycleTag(idx,dim)" :class="{pm:food[dim]&&food[dim]!==TAG_DEFAULTS[dim]}">{{food[dim]||'适中'}}</span>
+          <span class="fi-del" @click="removeFood(idx)">删除</span>
+        </div>
+      </div>
+      <div class="fadd">
+        <input v-model="newFoodName" @keyup.enter="addFood" placeholder="添加食物...">
+        <span class="fdist" @click="toggleDist">{{currentDist}}</span>
+        <button class="btn btn-sm btn-p" @click="addFood">添加</button>
+      </div>
+      <div class="cl" v-if="combos.length">
+        <div style="font-size:13px;color:var(--tg);margin-bottom:4px">📦 套餐：</div>
+        <span class="cl-i" v-for="(c,ci) in combos" :key="ci" @click="loadCombo(ci)">{{c.name}} ({{c.foods.length}}种)<span class="cl-d" @click.stop="removeCombo(ci)">×</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 我的 ===== -->
+<div v-if="page==='me'">
+  <div class="greeting"><div class="gm">⚙️ 设置与数据</div></div>
+
+  <div class="card">
+    <div class="tt" @click="showGuide=!showGuide" style="cursor:pointer">📖 功能说明 <span style="font-size:12px;color:var(--tg);font-weight:400">{{showGuide?'▾ 收起':'▸ 展开'}}</span></div>
+    <div v-if="showGuide">
+      <div class="guide-sec">
+        <div class="guide-t">🎯 选饭决策系统</div>
+        <div class="guide-c">系统依据当前时间、汕头本地气象及潮汕时令特征进行多维权重计算，提供非随机的科学推荐。用户启动决策后，将依次经历<b>健康评估</b>与<b>偏好问答</b>两个阶段。健康评估面板展示当前时段的饮食建议及候选食物推荐指数；问答环节中，系统会自动跳过无区分度的冗余问题，高效锁定最终推荐。若对首选结果不满意，可在结果页点选“其他选择”进行切换。</div>
+      </div>
+      <div class="guide-sec">
+        <div class="guide-t">📝 手动记录</div>
+        <div class="guide-c">用于直接录入已摄入食物，无需经过决策流程。输入框支持模糊检索候选库已有条目，亦可直接输入新食物名称并回车录入。支持多选后批量记录，系统将自动计算健康评分并写入历史档案。</div>
+      </div>
+      <div class="guide-sec">
+        <div class="guide-t">🍽️ 候选库管理</div>
+        <div class="guide-c">候选库是推荐算法的数据源，其属性标签的准确性直接影响推荐结果。点击<b>“管理”</b>可新增单条食物或通过“套餐”功能批量导入组合。点击食物下方的<b>属性标签</b>（如“荤素”、“口味”）可在预设选项中循环切换，以此校准该食物在算法中的权重特征。</div>
+      </div>
+      <div class="guide-sec">
+        <div class="guide-t">⚙️ 体态管理模式</div>
+        <div class="guide-c">提供「自然」、「减脂」、「增肌」三种算法策略。切换模式后，推荐系统将自动调整对“饱腹感”、“荤素”及“品类”维度的权重倾斜，无需用户手动干预。</div>
+      </div>
+      <div class="guide-sec">
+        <div class="guide-t">🔄 防重复惩罚机制</div>
+        <div class="guide-c">系统对近期摄入记录进行追踪。3日内重复摄入的食物将触发降权惩罚，连续摄入频次越高，惩罚权重越大，以确保饮食多样性。</div>
+      </div>
+      <div class="guide-sec">
+        <div class="guide-t">💾 数据存储机制</div>
+        <div class="guide-c">所有数据均存储于本地浏览器 LocalStorage 中，清除浏览器缓存将导致数据不可逆丢失。建议定期使用底部的“导出”功能进行本地备份。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="tt">👤 个人</div>
+    <div class="pr"><label>性别</label><button class="btn btn-sm" :style="{background:gender==='male'?'var(--pm)':'var(--sb)',color:gender==='male'?'#fff':'var(--tx)'}" @click="setGender('male')">👦 男</button><button class="btn btn-sm" :style="{background:gender==='female'?'var(--pm)':'var(--sb)',color:gender==='female'?'#fff':'var(--tx)'}" @click="setGender('female')">👧 女</button></div>
+    <div class="pr"><label>模式</label><button class="btn btn-sm" :style="{background:bodyMode==='natural'?'var(--pm)':'var(--sb)',color:bodyMode==='natural'?'#fff':'var(--tx)'}" @click="setBodyMode('natural')">🌿 自然</button><button class="btn btn-sm" :style="{background:bodyMode==='fat_loss'?'var(--pm)':'var(--sb)',color:bodyMode==='fat_loss'?'#fff':'var(--tx)'}" @click="setBodyMode('fat_loss')">🔥 减脂</button><button class="btn btn-sm" :style="{background:bodyMode==='muscle'?'var(--pm)':'var(--sb)',color:bodyMode==='muscle'?'#fff':'var(--tx)'}" @click="setBodyMode('muscle')">💪 增肌</button></div>
+  </div>
+
+  <div class="card">
+    <div class="tt">🎨 主题配色</div>
+    <div class="tgl">
+      <span class="tgl-i" v-for="t in themeList" :key="t.id" :class="{act:currentTheme===t.id}" @click="setTheme(t.id)"><span class="tgl-e">{{t.icon}}</span>{{t.name}}</span>
+    </div>
+  </div>
+
+  <div class="card" v-if="monthCulture">
+    <div class="tt">{{monthCulture.emoji}} 汕头 {{currentMonth}}月 · 天时饮食</div>
+    <div v-if="!showCultureDetail" @click="showCultureDetail=true" style="cursor:pointer">
+      <div class="mc2">
+        <div class="mth2">{{monthCulture.emoji}} {{currentMonth}}月 · {{monthCulture.title}}</div>
+        <div class="mst2" style="max-height:60px;overflow:hidden">{{monthCulture.entries[0].heading}}</div>
+      </div>
+      <div class="mt">▸ 查看完整天时提示</div>
+    </div>
+    <div v-else>
+      <div class="mc2" v-for="(entry,ei) in monthCulture.entries" :key="ei">
+        <div class="mth2">{{entry.heading}}</div>
+        <div class="mst2">{{entry.content}}</div>
+      </div>
+      <div class="mt" @click="showCultureDetail=false">▾ 收起</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="tt">📊 统计</div>
+    <div class="tab">
+      <span class="tab-i" :class="{act:statsTab==='week'}" @click="statsTab='week'">近7天</span>
+      <span class="tab-i" :class="{act:statsTab==='month'}" @click="statsTab='month'">本月</span>
+    </div>
+    <template v-if="statsTab==='week'">
+      <div class="sg">
+        <div class="sc"><div class="sv">{{weekStats.total}}</div><div class="sl">总记录</div></div>
+        <div class="sc"><div class="sv" style="color:#4caf50">{{weekStats.healthRate}}%</div><div class="sl">健康率</div></div>
+        <div class="sc"><div class="sv" style="color:#f44336">{{weekStats.lateCount}}</div><div class="sl">深夜</div></div>
+        <div class="sc"><div class="sv" style="color:#ff9800">{{weekStats.badCount}}</div><div class="sl">不健康</div></div>
+      </div>
+      <div class="sf" v-if="weekStats.freqList.length">
+        <div style="font-size:13px;color:var(--tg);margin-bottom:6px">🔥 常吃榜</div>
+        <div class="sf-i" v-for="f in weekStats.freqList" :key="f.name"><span class="sf-r g"></span><span class="sf-n">{{f.emoji}} {{f.name}}</span><span class="sf-t">{{f.cnt}}次</span></div>
+      </div>
+    </template>
+    <template v-else>
+      <div class="sg">
+        <div class="sc"><div class="sv">{{monthStats.total}}</div><div class="sl">总记录</div></div>
+        <div class="sc"><div class="sv" style="color:#4caf50">{{monthStats.healthRate}}%</div><div class="sl">健康率</div></div>
+        <div class="sc"><div class="sv" style="color:#f44336">{{monthStats.lateCount}}</div><div class="sl">深夜</div></div>
+        <div class="sc"><div class="sv" style="color:#ff9800">{{monthStats.badCount}}</div><div class="sl">不健康</div></div>
+      </div>
+      <div class="sf" v-if="monthStats.freqList.length">
+        <div style="font-size:13px;color:var(--tg);margin-bottom:6px">🔥 常吃榜</div>
+        <div class="sf-i" v-for="f in monthStats.freqList" :key="f.name"><span class="sf-r g"></span><span class="sf-n">{{f.emoji}} {{f.name}}</span><span class="sf-t">{{f.cnt}}次</span></div>
+      </div>
+    </template>
+  </div>
+
+  <div class="card">
+    <div class="tt">📜 记录 <span style="font-size:12px;color:var(--tg);font-weight:400">({{historyEntries.length}}条)</span></div>
+    <div class="hc">
+      <div class="he" v-for="e in historyEntries.slice().reverse().slice(0,50)" :key="e.id">
+        <span class="he-e">{{e.emoji||getEmoji(e.food)}}</span>
+        <div class="he-c">
+          <div class="he-n">{{e.food}}</div>
+          <div class="he-m">{{e.date}} {{e.time}} · <span :style="{color:e.healthLevel==='g'?'#4caf50':e.healthLevel==='b'?'#f44336':'#ff9800'}">{{e.healthLabel}}</span></div>
+        </div>
+        <span class="he-x" @click="removeHistoryEntry(e.id)">×</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="tt" @click="viewChangelog" style="cursor:pointer">📋 更新日志 <span style="font-size:12px;color:var(--tg);font-weight:400">{{showChangelog?'▾ 收起':'▸ 展开'}}</span> <span class="badge" v-if="hasNewVersion">NEW</span></div>
+    <div v-if="showChangelog">
+      <div class="clg-i" v-for="log in changelog.slice(0, 2)" :key="log.ver">
+        <div class="clg-v">v{{log.ver}}</div>
+        <div class="clg-c"><div v-for="(c,ci) in log.changes" :key="ci"><span :class="c[0]==='feat'?'f':c[0]==='fix'?'x':c[0]==='ref'?'r':'p'">{{c[0]==='feat'?'✨':c[0]==='fix'?'🐛':c[0]==='ref'?'♻️':'⚡'}}</span>{{c[1]}}</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="tt">💾 数据</div>
+    <div class="dbr">
+      <button class="dbt ex" @click="exportData">📤 导出</button>
+      <button class="dbt im" @click="$refs.fileInput.click()">📥 导入</button>
+      <input type="file" class="iff" ref="fileInput" accept=".json" @change="importData">
+    </div>
+  </div>
+</div>
+
+<!-- 底部导航 -->
+<div class="bnav">
+  <div class="bnav-i" :class="{act:page==='home'}" @click="page='home'"><span class="bnav-e">🏠</span>首页</div>
+  <div class="bnav-i" :class="{act:page==='me'}" @click="page='me'"><span class="bnav-e">👤</span>我的</div>
+</div>
+
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script>
+var{createApp,ref,computed,watch,onMounted,onUnmounted,nextTick}=Vue
+
+var APP_VERSION='1.5.0'
+var CHANGELOG=[
+  {ver:'1.5.0',changes:[
+    ['ref','移除夜间模式配色体系及外观切换功能，精简主题配置'],
+    ['ref','重构「玩法指南」为「功能说明」，采用专业教学口吻，补全决策流及候选库操作指引'],
+    ['ref','优化决策流：自动跳过剩余食物无分歧的冗余问题'],
+    ['ref','优化LocalStorage：watch写入增加防抖机制'],
+    ['ref','优化历史记录：新增时直接源头截断，移除isTruncating逻辑'],
+    ['ref','优化Emoji查找：字符串匹配与正则匹配分离']
+  ]},
+  {ver:'1.4.0',changes:[
+    ['feat','新增「玩法指南」说明书，解读智能推荐逻辑'],
+    ['feat','支持手动切换浅色/深色外观'],
+    ['fix','修复健康面板CSS拼写错误(textext-align)']
+  ]}
+]
+
+var EMOJI_SIMPLE=[
+  ['草粿','🧊'],['牛杂','🐂'],['猪血','🩸'],['猪脚','🐷'],['猪肉','🐷'],
+  ['鱼丸','🍥'],['鱼饭','🐟'],['虾','🦐'],['蟹','🦀'],['蚝','🦪'],
+  ['羊','🐑'],['海鲜','🦞'],['火锅','🍲'],['烧烤','🔥'],['肠粉','🌯'],
+  ['粿汁','🥣'],['粿条','🍜'],['炒粿','🍳'],['豆花','🍮'],['豆腐','🍮'],
+  ['奶茶','🧋'],['鸡','🐔'],['鸭','🦆'],['粥','🍚'],['面','🍜'],['饭','🍚'],
+  ['汤','🥣'],['蛋','🥚'],['饺','🥟'],['饼','🫓'],['卤','🍖'],['粿','🫓'],['鱼','🐟']
+]
+var EMOJI_REGEX=[
+  [/牛肉|促肉/,'🥩']
+]
+
+var TAG_RULES={
+  '品类':[[/奶茶|豆浆|果汁|凉茶|咖啡|茶/,'饮品'],[/草粿|豆花|肠粉|蚝烙|卤味|烧烤|捆粿|虾饼|点心|小食/,'小食']],
+  '荤素':[[/草粿|豆花|豆腐|绿豆|青菜|素/,'素'],[/牛肉|猪肉|鸡|鸭|鱼|虾|蟹|蚝|羊|卤鹅|鱼丸|促肉|海鲜|肉/,'荤']],
+  '饱腹':[[/草粿|豆花|奶茶|豆浆|果汁|凉茶|饮品/,'轻食'],[/肠粉|蚝烙|卤味|烧烤|捆粿|点心/,'解馋']],
+  '形态':[[/粿汁|促肉|砂锅粥|牛杂汤|猪血汤|鱼丸汤/,'带汤'],[/炒粿|干面|肠粉|捆粿|蚝烙/,'干炒'],[/汤|粥|火锅/,'带汤'],[/炒|饭|拌|煎|饺/,'干炒']],
+  '口味':[[/火锅|烧烤|炸|煎|辣|羊|卤味/,'上火/热气'],[/草粿|豆花|海鲜|鱼|粥|白灼|绿豆|清蒸/,'降火/清淡']],
+  '耗时':[[/火锅|早茶|大排档|烧烤/,'慢享']]
+}
+var TAG_DEFAULTS={'品类':'主食','荤素':'荤素','饱腹':'顶饱','形态':'适中','口味':'适中','耗时':'快餐'}
+var TAG_CYCLE_OPTIONS={'品类':['主食','小食','饮品'],'荤素':['荤','素','荤素'],'饱腹':['顶饱','解馋','轻食'],'形态':['带汤','干炒','适中'],'口味':['上火/热气','降火/清淡','适中'],'距离':['步行/外卖','近','远'],'耗时':['快餐','慢享']}
+
+// 移除 night 配置
+var THEMES={
+redBoat:{name:'红头船',icon:'⛵',colors:{bg:'#faf5f3',tx:'#3d1f1f',cd:'#fff8f6',pm:'#d32f2f',sb:'#f0e6e6',hl:'#d8cccc',tg:'#8b6f6f',ib:'#ede0e0'}},
+peach:{name:'红桃粿',icon:'🍑',colors:{bg:'#fdf2f0',tx:'#3d1a22',cd:'#fff5f3',pm:'#e85070',sb:'#f8e0e5',hl:'#eec8d0',tg:'#9a7080',ib:'#f0d0d8'}},
+goose:{name:'卤鹅',icon:'🦢',colors:{bg:'#f8f4f0',tx:'#2d1a10',cd:'#faf7f4',pm:'#8b4525',sb:'#ede8e3',hl:'#d8cfc5',tg:'#8a7d70',ib:'#e5ddd5'}},
+tea:{name:'工夫茶',icon:'🍵',colors:{bg:'#f2f5f0',tx:'#2e3a28',cd:'#f8faf5',pm:'#558b2f',sb:'#e5ede0',hl:'#c8d8c0',tg:'#6a8a5f',ib:'#d8e5d0'}},
+port:{name:'海滨城市',icon:'🌊',colors:{bg:'#f0f4f8',tx:'#2c3e50',cd:'#f8fbff',pm:'#1565c0',sb:'#e3eaf2',hl:'#c8d6e5',tg:'#6b7c8d',ib:'#dce6f0'}}
+}
+var CSS_VARS=['bg','tx','cd','pm','sb','hl','tg','ib']
+
+var HEALTH_QUOTES={late:[{b:'23:00后进食直接干扰生长激素分泌。长期深夜进食肥胖风险增35%。\n\n胃需2-3小时排空，躺下时胃酸易反流。',t:'很多"饿"其实是渴，先喝温水等10分钟。'},{b:'深夜进食让胰岛素飙升，身体本该休息却被逼消化。\n\n长期代谢紊乱脂肪堆积。',t:'先喝温水，10分钟后还饿再考虑。'},{b:'23点后胃在"下班模式"，强行加班效率极低。\n\n食物发酵产气，第二天口苦胃胀。',t:'温水+深呼吸5次，比食物更催眠。'}],dawn:[{b:'凌晨代谢最低生长激素分泌高峰。\n\n吃东西等于打断最重要的修复工作。',t:'实在饿：半碗白粥。'},{b:'凌晨胰岛素敏感性极低，进食血糖剧烈波动。',t:'回去睡觉，别开外卖。'},{b:'凌晨消化系统停摆，胃酸分泌最低。\n\n强行进食易引发胃炎。',t:'小口温水缓解空虚感。'}],breakfast:[{b:'规律吃早餐全因死亡率降12%。纯碳水2小时后血糖暴跌。\n\n蛋白质+复合碳水，饱腹4-5小时。',t:'白粥配杂咸加个蛋就满分。'},{b:'不吃早餐午餐会多吃20-30%更选高脂高糖。\n\n早餐是身体启动钥匙。',t:'一个蛋+豆浆比空腹强。'},{b:'9点前吃完早餐生物钟才正常。\n\n长期不吃胆结石风险增25%。',t:'促肉配粿条蛋白碳水都有了。'}],morning:[{b:'早餐蛋白质够上午不该饿。\n\n加餐延续恶性循环不如调早餐。',t:'真饿吃水果坚果，假饿喝水。'},{b:'10点血糖自然回落是正常现象不是真饿。',t:'忍到午餐身体会适应。'},{b:'上午加餐是减肥大忌。',t:'嘴馋不是饿，喝茶转移注意力。'}],lunch:[{b:'午餐占全天30-35%。½蔬菜+¼蛋白+¼主食。',t:'吃完散步10分钟血糖峰降22%。'},{b:'吃太饱血液涌向胃大脑供血不足下午犯困。',t:'先菜后肉最后主食血糖更稳。'},{b:'午餐最该"吃好"非"吃饱"。\n\n蛋白不够3点就找零食。',t:'促肉配粿条蛋白碳水都有。'}],afternoon:[{b:'3-4点生理低谷。奶茶蛋糕只兴奋30分钟更累。\n\n蛋白+纤维稳血糖不毁晚餐。',t:'酸奶+水果比奶茶强100倍。'},{b:'犯困不是缺糖是血糖过山车。',t:'草粿豆花清凉不毁晚餐。'},{b:'下午加餐超200大卡晚餐废了。',t:'喝茶，"饿"很多时候是渴。'}],dinner:[{b:'晚餐占全天20-25%够了。清淡让生长激素正常。',t:'鱼饭配粥是潮汕人的晚餐智慧。'},{b:'晚餐吃太多整晚生长激素减70%。',t:'七分饱+睡前3小时不食是最好抗衰。'},{b:'晚餐最易吃多。',t:'先汤后菜最后饭自然少吃。'}],evening:[{b:'20点后胰岛素敏感性降25%更易转脂肪。',t:'温牛奶或半碗粥，超200大卡就多了。'},{b:'8点后吃的几乎全存为脂肪——没消耗机会。',t:'实在饿吃水煮蛋。'},{b:'晚间进食最危险增肥比午餐多吃还严重。',t:'忍住不吃，明天早餐更香。'}]}
+
+var TAG_DIMS=['品类','荤素','饱腹','形态','口味','距离','耗时']
+
+var SEASONAL_DATA={
+1:{title:'大寒御寒',emoji:'🧣',entries:[
+  {heading:'🧣 节气：小寒 & 大寒',content:'1月是汕头最湿冷的时节，虽然没有北方零下，但湿冷入骨，海风刺骨。\n\n此时最需要温补御寒，但温补≠上火补。火锅、牛杂、粿汁是三大暖胃利器。\n\n潮汕老话说"冬节大过年"，虽然冬至已过，但整个1月都延续着进补的节奏。\n\n1月饮食口诀：暖胃为主，降火为辅。连吃3天火锅，第4天必须草粿豆花。',
+   banner:{emoji:'🧣',title:'大寒·湿冷入骨',desc:'汕头一年最冷时，海风夹湿气刺骨。',tip:'来碗牛杂粿条暖胃，但别忘了偶尔降降火。'},
+   weights:{'形态:带汤':4,'口味:上火/热气':2,'口味:降火/清淡':-2,'牛杂':5,'粿汁':5,'火锅':4}},
+  {heading:'🧊 温补也要降火',content:'连吃几天火锅牛杂，口腔溃疡报到。\n\n潮汕人聪明就聪明在：温补的同时懂得降火。吃完火锅第二天来碗草粿，这才是老饕的节奏。\n\n1月降火食物：草粿、海石花、绿豆爽、蛇舌草水。',
+   dayFrom:8,dayTo:31,
+   banner:{emoji:'🧊',title:'温补过头了？',desc:'连吃几天火锅，该降降火了。',tip:'草粿豆花安排上，温补降火两不误。'},
+   weights:{'口味:降火/清淡':4,'草粿':5,'豆花':4}},
+  {heading:'🌧️ 湿冷暴雨',content:'1月偶有寒潮暴雨，湿冷加倍。\n\n这种天出门觅食需要勇气，外卖是最优解。窝在家里喝碗砂锅粥，是最省心的暖胃方式。',
+   weather:'rain',
+   banner:{emoji:'🌧️',title:'寒潮暴雨',desc:'湿冷加倍，出门觅食需要勇气。',tip:'外卖到家，砂锅粥暖胃最省心。'},
+   weights:{'距离:步行/外卖':6,'距离:远':-6,'形态:带汤':5,'砂锅粥':5}}
+]},
+2:{title:'年味守胃',emoji:'🏮',entries:[
+  {heading:'🌸 节气：立春 & 雨水',content:'2月立春，但汕头春寒料峭，"倒春寒"说来就来。\n\n此时阳气初生，饮食宜辛甘发散，不宜酸收。葱姜蒜适当多用，帮身体驱寒气。\n\n不过2月最大的事不是节气，是——过年。',
+   weights:{'形态:带汤':2}},
+  {heading:'🧧 春节大鱼大肉',content:'潮汕年夜饭排场大：卤鹅、鱼饭、虾枣、蚝烙、砂锅粥……连吃几天，肠胃告急。\n\n初一吃素的传统在潮汕也有，但坚持不了几天就被拜年饭局打回原形。\n\n建议：年夜饭悠着点，留点肚子给初二初三的拜年餐。穿插清淡，喝单丛茶解腻。\n\n年后综合征：连吃3天大鱼大肉后，白粥配杂咸是最好的解毒方。',
+   dayFrom:1,dayTo:25,
+   banner:{emoji:'🧧',title:'年味正浓',desc:'春节大鱼大肉连吃几天，肠胃负担重。',tip:'每顿配杯单丛茶解腻，穿插清淡别偷懒。'},
+   weights:{'口味:降火/清淡':3,'口味:上火/热气':-3,'形态:带汤':2}},
+  {heading:'🌧️ 春寒暴雨',content:'2月倒春寒+暴雨，出门吃年饭都不方便。\n\n拜年路上注意安全，实在远就改天再去。家附近的店凑合吃也行。',
+   weather:'rain',
+   banner:{emoji:'🌧️',title:'春寒+暴雨',desc:'倒春寒说来就来，出门注意安全。',tip:'就近吃饭，别冒雨赶路。'},
+   weights:{'距离:步行/外卖':5,'距离:远':-5,'形态:带汤':3}}
+]},
+3:{title:'回南天求生',emoji:'💧',entries:[
+  {heading:'💧 节气：惊蛰 & 春分',content:'3月最折磨人的不是热，是湿——回南天。\n\n墙壁冒水珠，地板滑成溜冰场，内裤晾一周都不干。湿邪困脾，人容易疲倦、没胃口、四肢酸重。\n\n饮食原则：健脾祛湿。薏米、淮山、茯苓是回南天三宝。少吃生冷——生腌此时要克制，小心拉肚子。\n\n回南天宜喝汤：砂锅粥、牛杂汤、鱼丸汤，汤汤水水把湿气排出去。\n\n回南天忌生冷：生腌、冰饮、凉拌，这些平时爽，回南天吃了肠胃遭罪。',
+   banner:{emoji:'💧',title:'回南天·湿邪困脾',desc:'3月最折磨人的是湿，墙壁冒水珠地板滑。',tip:'健脾祛湿为先，薏米淮山安排上，生腌少碰。'},
+   weights:{'口味:降火/清淡':4,'形态:带汤':3,'口味:上火/热气':-2,'距离:步行/外卖':3,'距离:远':-4}},
+  {heading:'🌧️ 暴雨不宜远行',content:'3月也是暴雨开始增多的月份，回南天+暴雨双重暴击。\n\n出门觅食成难题，走路打滑，骑车危险。能外卖就外卖，能就近就就近。\n\n湿气重时特别适合喝汤——砂锅粥、牛杂汤、鱼丸汤，汤汤水水把湿气排出去。',
+   weather:'rain',
+   banner:{emoji:'🌧️',title:'暴雨+回南天',desc:'双重暴击，出门觅食成难题。',tip:'外卖到家最安全，来碗热汤排湿气。'},
+   weights:{'距离:步行/外卖':6,'距离:远':-8,'形态:带汤':4}}
+]},
+4:{title:'清明食叶',emoji:'🍃',entries:[
+  {heading:'🍃 节气：清明 & 谷雨',content:'潮汕清明有句老话："清明食叶"。意思是清明前后要吃嫩叶菜，清热解毒。\n\n此时各种时令绿叶菜最嫩最鲜：枸杞叶、番薯叶、麻叶。麻叶是潮汕特色，别的地方真吃不到。\n\n清明也是海鲜的好时节——"清明螺，赛大鹅"，各种贝类正肥美。\n\n4月饮食关键词：鲜、嫩、清。让肠胃从冬天的厚重中苏醒过来。',
+   banner:{emoji:'🍃',title:'清明·食叶时节',desc:'潮汕老话"清明食叶"，嫩叶菜清热解毒。',tip:'枸杞叶汤、麻叶煲，此时最鲜最嫩。'},
+   weights:{'口味:降火/清淡':4,'荤素:素':3,'形态:带汤':2}},
+  {heading:'🌧️ 谷雨天渐热',content:'4月下旬谷雨，汕头开始转热，偶有阵雨。\n\n饮食从温补转向清淡，火锅可以渐渐少吃了。\n\n薄壳（海瓜子）开始有消息，但还不到最肥的时候，再等一个月。',
+   dayFrom:15,dayTo:30,
+   weights:{'口味:降火/清淡':3,'口味:上火/热气':-2}},
+  {heading:'🌧️ 春雨绵绵',content:'4月春雨多，不过比回南天好受些。\n\n带把伞出门觅食，或者干脆外卖。春雨天的砂锅粥格外暖。',
+   weather:'rain',
+   banner:{emoji:'🌧️',title:'春雨绵绵',desc:'4月春雨多，带伞出门或外卖。',tip:'春雨天的砂锅粥格外暖。'},
+   weights:{'距离:步行/外卖':4,'距离:远':-4,'形态:带汤':3}}
+]},
+5:{title:'初夏湿热',emoji:'🌿',entries:[
+  {heading:'🌿 节气：立夏 & 小满',content:'汕头开始进入闷热潮湿的初夏，雷阵雨多，俗称"湿热"或"龙舟水"前夕。人容易疲倦、没胃口（疰夏）。\n\n🥵 防疰夏宜清淡：天气一热，重油重盐容易反胃。此时鱼饭、砂锅粥、促肉（少沙茶多清汤）是首选，优质蛋白好消化。\n\n🌿 清热解毒正当时：街边凉茶铺生意渐好。吃草粿、海石花、绿豆爽降火气；家里会煮蛇舌草、鼎盖草等青草水。\n\n🦪 薄壳季初尝："五一"前后，第一波薄壳（海瓜子）上市，虽然还不够肥美，但配金不换炒一碟，已是初夏鲜味。',
+   banner:{emoji:'🌿',title:'小满·湿热交织',desc:'汕头进入龙舟水季，闷热易没胃口。',tip:'吃点鱼饭补充优质蛋白不长胖，来碗草粿降火气。'},
+   weights:{'口味:降火/清淡':5,'口味:上火/热气':-4,'形态:带汤':2,'草粿':6,'鱼饭':5,'薄壳':5}},
+  {heading:'🐉 五月节近',content:'潮汕端午叫"五月节"，不仅要赛龙舟，还要驱邪避疫。\n\n🥟 食粽球：汕头特色双拼粽球（甜咸党和解），虽然端午才吃，但5月底各家老字号（如老妈宫粽球）已经开始大排长龙。糯米难消化，建议配功夫茶解腻。\n\n🧄 吃"五果汤"：有些家庭端午会煮五果汤（桂圆、白果、莲子、薏米、百合等），清补养生。',
+   dayFrom:22,dayTo:31,
+   banner:{emoji:'🐉',title:'五月节近',desc:'端午将至，老妈宫粽球排队啦！',tip:'双拼粽球虽好，糯米太胀胃，吃完记得喝杯单丛茶解腻。'},
+   weights:{'粽球':6,'口味:降火/清淡':3}},
+  {heading:'🌧️ 龙舟水',content:'5月中下旬极易突发暴雨（龙舟水），偶尔还有湿嗒嗒的回南天。\n\n🌧️ 暴雨外卖党：龙舟水一发，出门吃饭成奢望。\n\n🌡️ 湿气重健脾胃：回南天湿气入体，宜吃些薏米、淮山相关的汤水，少吃生冷（生腌此时要适量，小心拉肚子）。',
+   dayFrom:15,dayTo:31,weather:'rain',
+   banner:{emoji:'🌧️',title:'龙舟水来了',desc:'暴风雨说来就来，出门觅食成奢望。',tip:'外卖/就近最安全，热汤暖胃排湿气。'},
+   weights:{'距离:步行/外卖':6,'距离:远':-6,'形态:带汤':4,'口味:降火/清淡':3}}
+]},
+6:{title:'降火传说',emoji:'🧊',entries:[
+  {heading:'☀️ 节气：芒种 & 夏至',content:'6月是汕头最热的月份之一，高温+高湿=蒸笼模式。\n\n草粿豆花消暑双宝，6月不降火7月看中医。\n\n此时饮食以清凉降火为主力，火锅烧烤能免则免。如果非要吃，请配凉茶续命。\n\n盛夏利器：草粿冰镇最爽、海石花清甜、绿豆爽消暑、蛇舌草凉茶苦口但降火。\n\n6月薄壳正肥！配金不换炒一大盘，是潮汕夏夜的标配。',
+   banner:{emoji:'🧊',title:'夏至·蒸笼模式',desc:'6月不降火7月看中医，草粿豆花续命。',tip:'草粿豆花每天安排，火锅烧烤先缓缓。'},
+   weights:{'口味:降火/清淡':6,'口味:上火/热气':-6,'草粿':7,'豆花':6,'品类:饮品':3,'品类:小食':2,'薄壳':5}},
+  {heading:'🌡️ 高温预警',content:'6月常有35°C+高温，体感温度更高。\n\n高温天外出觅食=中暑风险。中午时段尽量外卖，傍晚再出门。\n\n出汗多要补水，但不能只喝白水——凉茶、绿豆汤、海石花都能补充电解质。',
+   weather:'hot',
+   banner:{emoji:'🌡️',title:'高温暴晒',desc:'35度+出门觅食=中暑风险。',tip:'中午外卖，傍晚再出门，草粿凉茶续命。'},
+   weights:{'距离:步行/外卖':5,'距离:远':-5,'口味:降火/清淡':4}},
+  {heading:'🌧️ 暴雨突袭',content:'6月也是暴雨季，闷热过后突然倾盆。\n\n暴雨时别出门，等雨停了再觅食。或者外卖到家，安全第一。',
+   weather:'rain',
+   banner:{emoji:'🌧️',title:'暴雨突袭',desc:'闷热过后突然倾盆，注意安全。',tip:'别冒雨出门，外卖到家最稳。'},
+   weights:{'距离:步行/外卖':6,'距离:远':-7,'形态:带汤':3}}
+]},
+7:{title:'台风季生存',emoji:'🌀',entries:[
+  {heading:'🌀 节气：小暑 & 大暑',content:'7月两大主题：台风和酷暑。\n\n台风来时，出门觅食是拿命拼。提前囤好泡面和速食，或者靠外卖续命。\n\n台风过后菜价飞涨，但海鲜反而便宜——风浪把鱼打上岸，渔民抢收甩卖。\n\n酷暑继续降火，但台风天反而适合吃热乎的——窝在家里喝砂锅粥，窗外风雨飘摇，别有一番滋味。\n\n7月水果季：荔枝、龙眼正当令。但"一颗荔枝三把火"，别贪嘴吃太多。',
+   banner:{emoji:'🌀',title:'台风季·风雨飘摇',desc:'7月台风说来就来，出门觅食靠勇气。',tip:'台风天窝家喝粥，风雨过后海鲜便宜。'},
+   weights:{'距离:步行/外卖':5,'距离:远':-6,'形态:带汤':3,'口味:降火/清淡':3}},
+  {heading:'🌧️ 台风天',content:'台风预警期间，非必要不出门。\n\n外卖小哥也不安全，很多店会歇业。提前备好干粮是正经事。\n\n如果非要吃：家里有什么煮什么，砂锅粥是台风天的灵魂食物——什么配料都能往里扔。',
+   weather:'rain',
+   banner:{emoji:'⚠️',title:'台风预警',desc:'非必要不出门，外卖小哥也不安全。',tip:'家里有啥煮啥，砂锅粥拯救一切。'},
+   weights:{'距离:步行/外卖':8,'距离:远':-10,'形态:带汤':5,'砂锅粥':6}},
+  {heading:'🌡️ 盛夏酷暑',content:'7月高温频繁，体感40°C不是梦。\n\n白天尽量别出门觅食，傍晚7点后海风来了再行动。\n\n降火是7月的永恒主题：草粿、豆花、凉茶、海石花轮着来。',
+   weather:'hot',
+   banner:{emoji:'🌡️',title:'酷暑难耐',desc:'体感40°C不是梦，白天别出门。',tip:'傍晚再出门，草粿豆花凉茶轮着来。'},
+   weights:{'距离:步行/外卖':4,'距离:远':-4,'口味:降火/清淡':5,'口味:上火/热气':-5,'草粿':5,'豆花':4}}
+]},
+8:{title:'砂锅修行',emoji:'🍲',entries:[
+  {heading:'🍲 节气：立秋 & 处暑',content:'立秋？汕头表示不服。8月秋老虎比夏天还夏天，35°C是常态。\n\n但早晚开始有一丝凉意（真的是一丝），砂锅粥从早到晚都是好选择。\n\n以汤养胃，砂锅粥是全季王牌。无论外面多热，一锅热粥下肚，胃是舒服的。\n\n8月也是海鲜旺季——休渔期结束，新鲜渔获大量上市，鱼饭、虾、蟹正当季。\n\n膏蟹开始有膏了！8月底的膏蟹虽不如10月饱满，但已初见规模。',
+   banner:{emoji:'🍲',title:'秋老虎·以汤养胃',desc:'立秋了但汕头表示不服，秋老虎继续蒸。',tip:'砂锅粥全季王牌，休渔期结束海鲜正肥。'},
+   weights:{'形态:带汤':4,'口味:降火/清淡':3,'口味:上火/热气':-3,'砂锅粥':5,'鱼饭':4}},
+  {heading:'🔥 秋老虎',content:'8月高温依然频繁，别被"秋"字骗了。\n\n继续降火模式，等到9月真正转凉再调整。\n\n傍晚可以开始考虑出门觅食了，5点后的海风终于有一丝凉意。',
+   weather:'hot',
+   banner:{emoji:'🔥',title:'秋老虎发威',desc:'别被"秋"字骗了，还是蒸笼。',tip:'继续降火模式，傍晚海风有凉意了。'},
+   weights:{'口味:降火/清淡':4,'口味:上火/热气':-4,'距离:近':2}}
+]},
+9:{title:'月圆克己',emoji:'🌙',entries:[
+  {heading:'🍂 节气：白露 & 秋分',content:'9月终于凉快了！秋高气爽，食欲回来了。\n\n但别急着放飞——中秋的朥饼在等你。高油高糖，一个月吃3块就够了。\n\n9月是潮汕最好的月份之一：不冷不热，海鲜肥美，水果丰收。此时不吃更待何时？\n\n秋风起，吃火锅终于不再是大汗淋漓的事了。促肉配沙茶酱，终于能吃出香气而不是只吃出一身汗。',
+   banner:{emoji:'🍂',title:'秋分·食欲之秋',desc:'9月终于凉快了，食欲回来了！',tip:'海鲜肥美水果丰收，但朥饼悠着点吃。'},
+   weights:{'口味:降火/清淡':2,'口味:上火/热气':-1}},
+  {heading:'🥮 中秋拜月娘',content:'潮汕中秋叫"拜月娘"，比过年还讲究。\n\n朥饼（潮式月饼）是主角：绿豆沙、乌豆沙、老香黄、水晶……每种都好吃，每种都高油高糖。\n\n吃完朥饼必须配单丛茶——这是潮汕人的自我修养。\n\n拜月娘的水果也很讲究：柚子、柿子、杨桃、龙眼，都是当季最好的。',
+   dayFrom:15,dayTo:30,
+   banner:{emoji:'🥮',title:'中秋·拜月娘',desc:'朥饼虽好，高油高糖要克制。',tip:'吃完朥饼配单丛，这是潮汕人的自我修养。'},
+   weights:{'口味:降火/清淡':3,'品类:饮品':3,'朥饼':5}}
+]},
+10:{title:'贴秋膘博弈',emoji:'🍖',entries:[
+  {heading:'🍂 节气：寒露 & 霜降',content:'10月真正入秋，早晚要穿薄外套。\n\n"贴秋膘"的号角吹响——但进补不是胡吃海喝。\n\n潮汕人的进补智慧：先清后补。先吃几天清淡让肠胃休息，再开始温补，吸收更好。\n\n10月吃火锅终于舒服了！牛杂、砂锅粥、促肉，吃起来不再大汗淋漓。\n\n但别忘了穿插降火——连吃3天火锅第4天必须草粿豆花。\n\n10月膏蟹正肥！"秋风起，蟹脚痒"，此时的膏蟹膏满肉肥，是一年中最好的时候。',
+   banner:{emoji:'🍖',title:'寒露·贴秋膘',desc:'进补号角吹响，但温补≠乱补。',tip:'先清后补更科学，火锅配降火才是老饕。'},
+   weights:{'形态:带汤':3,'口味:降火/清淡':2,'饱腹:顶饱':2,'蟹':5}},
+  {heading:'🔥 贴膘别贴火',content:'连吃几天温补，口腔溃疡、喉咙痛报到。\n\n贴膘≠贴火。火锅牛杂连吃3天，第4天必须降火。\n\n10月降火推荐：白粥配杂咸、草粿、豆花、蛇舌草水。\n\n重阳节登高后，来碗清补凉最舒服。',
+   dayFrom:10,dayTo:31,
+   weights:{'口味:降火/清淡':3,'口味:上火/热气':-2,'草粿':3,'豆花':3}},
+  {heading:'🌧️ 秋雨添凉',content:'10月偶有秋雨，一场秋雨一场凉。\n\n下雨天适合喝汤，不适合远行觅食。',
+   weather:'rain',
+   weights:{'距离:步行/外卖':4,'距离:远':-4,'形态:带汤':3}}
+]},
+11:{title:'冬节前奏',emoji:'🥟',entries:[
+  {heading:'❄️ 节气：立冬 & 小雪',content:'11月汕头终于有冬天的样子了——虽然北方朋友觉得这是春天。\n\n"冬大过年"——潮汕人对冬至的重视超过春节。\n\n冬节丸（汤圆）开始预售，甜的咸的都有。但糯米不好消化，别一次吃太多。\n\n此时适合温补：牛杂、火锅、砂锅粥、促肉，怎么暖怎么来。\n\n但11月天干物燥，温补同时要防燥——喝汤、喝单丛、少吃炸物。\n\n11月也是晒腊肉的好时候，阳台上挂满腊肠腊肉才是正宗潮汕人家。',
+   banner:{emoji:'❄️',title:'立冬·温补正当时',desc:'"冬大过年"，温补模式正式开启。',tip:'牛杂砂锅粥暖起来，但别忘了防燥。'},
+   weights:{'形态:带汤':4,'口味:降火/清淡':2,'饱腹:顶饱':2,'牛杂':4,'砂锅粥':4}},
+  {heading:'🥟 冬至预备',content:'11月底，各家开始准备冬节丸。\n\n潮汕冬节丸比普通汤圆大，甜的有芝麻花生馅，咸的有鲜肉馅。\n\n糯米难消化，建议中午吃、少量吃、配茶吃。',
+   dayFrom:20,dayTo:30,
+   weights:{'口味:降火/清淡':2,'形态:带汤':2}},
+  {heading:'🌧️ 初冬寒雨',content:'11月寒雨增多，湿冷开始显现。\n\n初冬的雨比秋天更冷，出门记得带伞带外套。\n\n寒雨天最适合窝在店里吃碗热汤。',
+   weather:'rain',
+   banner:{emoji:'🌧️',title:'初冬寒雨',desc:'湿冷开始显现，出门记得带伞。',tip:'窝在店里吃碗热汤最舒服。'},
+   weights:{'距离:步行/外卖':5,'距离:远':-5,'形态:带汤':4}}
+]},
+12:{title:'年终清算',emoji:'🎄',entries:[
+  {heading:'🥟 节气：大雪 & 冬至',content:'"冬节大过年"——冬至是潮汕最大的节日之一。\n\n全家团聚吃冬节丸，吃了冬节丸才算长一岁。\n\n12月是温补的巅峰期：牛杂火锅、砂锅粥、促肉、卤鹅……能暖的都来。\n\n但年底聚餐多，大鱼大肉频率高，更要穿插清淡。别让12月成为肠胃的噩梦。\n\n12月饮食口诀：暖而不燥，补而不腻。火锅配降火，大餐配清茶。',
+   banner:{emoji:'🥟',title:'冬至·冬大过年',desc:'吃了冬节丸才算长一岁，温补巅峰期。',tip:'温补归温补，穿插清淡，别让年底变胃的噩梦。'},
+   weights:{'形态:带汤':4,'饱腹:顶饱':3,'口味:降火/清淡':2,'牛杂':4,'砂锅粥':4,'卤鹅':3}},
+  {heading:'🗓️ 年终聚餐',content:'12月聚餐扎堆：公司年会、朋友聚会、家庭聚餐……\n\n每顿大鱼大肉，胃受不了。建议：聚餐前先喝碗汤垫底，聚餐时慢吃少喝，聚餐后来碗草粿降火。\n\n年底别翻车——用一个健康的12月给今年画个句号。\n\n早睡是最好的补品，12月少熬夜比吃什么都有用。',
+   dayFrom:15,dayTo:31,
+   banner:{emoji:'🗓️',title:'年终聚餐季',desc:'聚餐扎堆，大鱼大肉胃受不了。',tip:'先喝汤垫底，慢吃少喝，聚餐后草粿降火。'},
+   weights:{'口味:降火/清淡':3,'口味:上火/热气':-2,'草粿':4}},
+  {heading:'🌧️ 冬雨湿冷',content:'12月寒雨配合湿冷，体感温度比实际更低。\n\n这种天只想窝在家，外卖是最好的朋友。\n\n如果必须出门，选近一点的店，吃完赶紧回来。',
+   weather:'rain',
+   banner:{emoji:'🌧️',title:'冬雨湿冷',desc:'体感温度比实际更低，窝家最舒服。',tip:'外卖到家，或者就近吃完赶紧回。'},
+   weights:{'距离:步行/外卖':5,'距离:远':-6,'形态:带汤':4}}
+]}
+}
+
+var DATA_VERSION=18
+var FOOD_MIGRATIONS={
+  17:function(foods){foods.forEach(function(f){if(!f['品类'])Object.assign(f,autoTag(f.name))})},
+  18:function(foods){foods.forEach(function(f){if(f['距离']==='步行')f['距离']='步行/外卖'})}
+}
+function migrateFoods(foods,fromVersion){if(!Array.isArray(foods))return[];for(var v=fromVersion+1;v<=DATA_VERSION;v++){if(FOOD_MIGRATIONS[v])FOOD_MIGRATIONS[v](foods)}return foods}
+
+var fmtDate=function(d){return d.getFullYear()+'-'+(d.getMonth()+1).toString().padStart(2,'0')+'-'+d.getDate().toString().padStart(2,'0')}
+var fmtMonth=function(d){return d.getFullYear()+'-'+(d.getMonth()+1).toString().padStart(2,'0')}
+var pickRandom=function(a){return a[Math.floor(Math.random()*a.length)]}
+function safeRead(key,fallback,validator){try{var raw=localStorage.getItem(key);if(!raw)return fallback;var parsed=JSON.parse(raw);if(validator&&!validator(parsed))return fallback;return parsed}catch(e){console.warn('safeRead: 数据损坏，使用默认值',key,e);return fallback}}
+function safeWrite(key,value){try{localStorage.setItem(key,value)}catch(e){console.warn('safeWrite: 写入失败',key,e)}}
+async function fetchWithRetry(url,retries){for(var i=0;i<=retries;i++){try{var r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);return await r.json()}catch(e){if(i===retries)throw e;await new Promise(function(resolve){setTimeout(resolve,1000*(i+1))})}}}
+var _emojiCache=new Map()
+function getEmoji(name){
+  if(_emojiCache.has(name))return _emojiCache.get(name);
+  for(var i=0;i<EMOJI_SIMPLE.length;i++){if(name.indexOf(EMOJI_SIMPLE[i][0])>=0){_emojiCache.set(name,EMOJI_SIMPLE[i][1]);return EMOJI_SIMPLE[i][1]}}
+  for(var i=0;i<EMOJI_REGEX.length;i++){if(EMOJI_REGEX[i][0].test(name)){_emojiCache.set(name,EMOJI_REGEX[i][1]);return EMOJI_REGEX[i][1]}}
+  _emojiCache.set(name,'🍽️');return'🍽️'
+}
+function getCategoryKey(name){for(var i=0;i<EMOJI_SIMPLE.length;i++){if(name.indexOf(EMOJI_SIMPLE[i][0])>=0)return'cat_'+i}return'cat_default'}
+function getTag(food,key){return food&&food[key]?food[key]:'适中'}
+function autoTag(name){var result=Object.assign({},TAG_DEFAULTS);Object.keys(TAG_RULES).forEach(function(key){var rules=TAG_RULES[key];for(var i=0;i<rules.length;i++){if(rules[i][0].test(name)){result[key]=rules[i][1];break}}});return result}
+function calcRepeatPenalty(foodName,historyEntries){var threeDaysAgo=fmtDate(new Date(Date.now()-3*864e5));var recent=historyEntries.filter(function(e){return e.food===foodName&&e.date>=threeDaysAgo});if(recent.length>=3)return-20;if(recent.length>=2)return-12;if(recent.length>=1)return-5;return 0}
+
+function debounce(fn, delay) {
+  var timer;
+  return function() {
+    var args = arguments, context = this;
+    clearTimeout(timer);
+    timer = setTimeout(function() { fn.apply(context, args); }, delay);
+  };
+}
+
+function useTheme(){
+  var saved=localStorage.getItem('stheme')||'tea';
+  if(saved==='auto'||saved==='jelly'||saved==='phoenix')saved='tea';
+  var currentTheme=ref(saved);
+  var themeList=[{id:'redBoat',name:'红头船',icon:'⛵'},{id:'peach',name:'红桃粿',icon:'🍑'},{id:'goose',name:'卤鹅',icon:'🦢'},{id:'tea',name:'工夫茶',icon:'🍵'},{id:'port',name:'海滨城市',icon:'🌊'}];
+  
+  var apply=function(){
+    var t=THEMES[currentTheme.value],root=document.documentElement;
+    var colors=t.colors; // 直接读取 colors 对象
+    CSS_VARS.forEach(function(k){root.style.setProperty('--'+k,colors[k])})
+  };
+  var setTheme=function(id){currentTheme.value=id;safeWrite('stheme',id);apply()};
+  onMounted(function(){apply()}); // 移除定时器，主题不再随时间变动
+  return{currentTheme,themeList,setTheme}
+}
+
+function useProfile(){var gender=ref(localStorage.getItem('sg')||'male');var setGender=function(g){gender.value=g;safeWrite('sg',g)};var bodyMode=ref(localStorage.getItem('swmd')||'natural');var setBodyMode=function(m){bodyMode.value=m;safeWrite('swmd',m)};var modeLabel=computed(function(){return bodyMode.value==='fat_loss'?'🔥减脂':bodyMode.value==='muscle'?'💪增肌':'🌿自然'});var MODE_TIPS={fat_loss:{late:'减脂期深夜进食=白天全白费',morning:'减脂早餐：高蛋白+低GI碳水',lunch:'减脂午餐：蛋白优先碳水减半',dinner:'减脂晚餐：蔬菜为主碳水能省则省',other:'减脂模式：优先轻食/清淡/素菜'},muscle:{late:'增肌期可补蛋白质但别碰碳水',morning:'增肌早餐：蛋白+碳水给肌肉充电',lunch:'增肌午餐：大口吃肉+复合碳水',dinner:'增肌晚餐：蛋白质不能少',other:'增肌模式：优先顶饱/荤菜/主食'},natural:null};var modeTip=computed(function(){if(!MODE_TIPS[bodyMode.value])return null;var h=new Date().getHours(),t=MODE_TIPS[bodyMode.value];return h>=23||h<4?t.late:h>=6&&h<9?t.morning:h>=11&&h<14?t.lunch:h>=17&&h<20?t.dinner:t.other});var greetingText=computed(function(){var h=new Date().getHours(),g=gender.value==='female'?'女王':'人';return(h<6?'凌晨好，':h<9?'早上好，':h<12?'上午好，':h<14?'中午好，':h<18?'下午好，':h<22?'晚上好，':'夜深了，')+'干饭'+g});var greetingEmoji=computed(function(){var h=new Date().getHours();return h<6?'🌙':h<9?'🌅':h<12?'☀️':h<14?'🍜':h<18?'🫖':h<22?'🌆':'🌙'});return{gender,setGender,bodyMode,setBodyMode,modeLabel,modeTip,greetingText,greetingEmoji}}
+
+function useWeather(){var weather=ref({loading:true,temp:'--',humidity:'--',time:'',condition:'',isBad:false,advice:''});onMounted(async function(){try{var d=await fetchWithRetry('https://api.open-meteo.com/v1/forecast?latitude=23.35&longitude=116.68&current=temperature_2m,relative_humidity_2m,weather_code&timezone=Asia%2FShanghai',2);weather.value.temp=d.current.temperature_2m;weather.value.humidity=d.current.relative_humidity_2m;var code=d.current.weather_code;weather.value.time=d.current.time.split('T')[1].slice(0,5);if([0,1].indexOf(code)>=0){weather.value.condition=weather.value.temp>30?'暴晒':'晴朗';weather.value.isBad=weather.value.temp>30}else if([45,48].indexOf(code)>=0){weather.value.condition='起雾';weather.value.isBad=true}else if([51,53,55,61,63,65,66,67,80,81,82,95,96,99].indexOf(code)>=0){weather.value.condition=[65,81,82,95,96,99].indexOf(code)>=0?'大雨':'下雨';weather.value.isBad=true}else weather.value.condition='多云';weather.value.advice=weather.value.isBad?'不宜远行！':weather.value.temp>30&&weather.value.humidity>80?'高温吃降火！':weather.value.temp<15?'阴冷整热汤！':'天气OK';weather.value.loading=false}catch(e){weather.value.advice='获取失败';weather.value.loading=false}});return{weather}}
+
+function useFood(){var storedVersion=0;try{var tmp=JSON.parse(localStorage.getItem('v2F_ver'));if(typeof tmp==='number')storedVersion=tmp}catch(e){}var foods=ref(migrateFoods(safeRead('v2F',[],Array.isArray),storedVersion));
+safeWrite('v2F_ver',DATA_VERSION.toString());
+watch(foods,debounce(function(v){safeWrite('v2F',JSON.stringify(v));safeWrite('v2F_ver',DATA_VERSION.toString())},300),{deep:true});
+var newFoodName=ref(''),currentDist=ref('步行/外卖'),lastAddedName=ref('');var toggleDist=function(){var opts=['步行/外卖','近','远'];currentDist.value=opts[(opts.indexOf(currentDist.value)+1)%3]};var addFood=function(){if(!newFoodName.value.trim())return;foods.value.push(Object.assign({name:newFoodName.value.trim(),'距离':currentDist.value},autoTag(newFoodName.value)));lastAddedName.value=newFoodName.value.trim();newFoodName.value='';currentDist.value='步行/外卖';setTimeout(function(){lastAddedName.value=''},400)};var cycleTag=function(index,tagKey){var food=foods.value[index],opts=TAG_CYCLE_OPTIONS[tagKey];food[tagKey]=opts[(opts.indexOf(food[tagKey])+1)%opts.length]};var removeFood=function(index){foods.value.splice(index,1);var newSel={};Object.keys(selectedFoods.value).forEach(function(k){var i=Number(k);if(i===index)return;if(i>index)newSel[i-1]=true;else newSel[i]=true});selectedFoods.value=newSel};var foodGroups=computed(function(){var seen=new Set,result=[];for(var i=0;i<foods.value.length;i++){var key=getCategoryKey(foods.value[i].name);if(seen.has(key))continue;seen.add(key);result.push({key:key,emoji:getEmoji(foods.value[i].name),isNew:foods.value[i].name===lastAddedName.value});if(result.length>=10)break}return result});var selectedFoods=ref({}),toggleSelect=function(index){if(selectedFoods.value[index])delete selectedFoods.value[index];else selectedFoods.value[index]=true;selectedFoods.value=Object.assign({},selectedFoods.value)};var isGroupSelected=function(key){return foods.value.some(function(f,i){return getCategoryKey(f.name)===key&&selectedFoods.value[i]})};var toggleGroupSelect=function(key){var indices=[];foods.value.forEach(function(f,i){if(getCategoryKey(f.name)===key)indices.push(i)});var allSelected=indices.every(function(i){return selectedFoods.value[i]});indices.forEach(function(i){if(allSelected)delete selectedFoods.value[i];else selectedFoods.value[i]=true});selectedFoods.value=Object.assign({},selectedFoods.value)};var selectedCount=computed(function(){return Object.keys(selectedFoods.value).length});var combos=ref(safeRead('sc',[],Array.isArray)),comboName=ref('');watch(combos,debounce(function(v){safeWrite('sc',JSON.stringify(v))},300),{deep:true});var saveCombo=function(){if(!comboName.value.trim()||selectedCount.value<2)return;var indices=Object.keys(selectedFoods.value).map(Number);var comboFoods=indices.filter(function(i){return foods.value[i]}).map(function(i){return Object.assign({},foods.value[i])});if(comboFoods.length<2)return;combos.value.push({name:comboName.value.trim(),foods:comboFoods});comboName.value='';selectedFoods.value={}};var loadCombo=function(index){combos.value[index].foods.forEach(function(f){if(!foods.value.find(function(e){return e.name===f.name}))foods.value.push(Object.assign({},f))})};var loadComboAndSwitch=function(index){loadCombo(index)};var removeCombo=function(index){combos.value.splice(index,1)};var showManage=ref(false);return{foods,newFoodName,currentDist,addFood,cycleTag,removeFood,toggleDist,foodGroups,selectedFoods,toggleSelect,isGroupSelected,toggleGroupSelect,selectedCount,combos,comboName,saveCombo,loadCombo,loadComboAndSwitch,removeCombo,showManage}}
+
+function useHistory(foodsRef,weatherRef,bodyModeRef){var historyEntries=ref(safeRead('sh',[],Array.isArray));
+watch(historyEntries,debounce(function(v){safeWrite('sh',JSON.stringify(v))},300),{deep:true});
+function calcTimeScore(food,hour){var s=0,taste=getTag(food,'口味'),form=getTag(food,'形态'),duration=getTag(food,'耗时'),distance=getTag(food,'距离'),bulk=getTag(food,'饱腹'),category=getTag(food,'品类');if(hour>=23||hour<4){if(taste==='降火/清淡')s+=12;else if(taste==='上火/热气')s-=12;if(form==='带汤')s+=6;else if(form==='干炒')s-=4;if(duration==='快餐')s+=4;else if(duration==='慢享')s-=6;if(distance==='步行/外卖')s+=6;else if(distance==='远')s-=8;if(bulk==='轻食')s+=4;else if(bulk==='顶饱')s-=4;if(category==='饮品')s+=3}else if(hour>=6&&hour<9){if(form==='带汤')s+=4;if(bulk==='顶饱')s+=4;if(taste==='降火/清淡')s+=2;else if(taste==='上火/热气')s-=3}else if(hour>=11&&hour<14){if(bulk==='顶饱')s+=3;if(category==='主食')s+=3}else if(hour>=14&&hour<17){if(taste==='降火/清淡')s+=5;else if(taste==='上火/热气')s-=4;if(category==='饮品')s+=3;if(category==='小食')s+=2}else if(hour>=17&&hour<20){if(form==='带汤')s+=4;if(taste==='降火/清淡')s+=5;else if(taste==='上火/热气')s-=5}else if(hour>=20){if(taste==='降火/清淡')s+=10;else if(taste==='上火/热气')s-=10;if(form==='带汤')s+=6;else if(form==='干炒')s-=6;if(bulk==='轻食')s+=5;else if(bulk==='顶饱')s-=4;if(category==='饮品')s+=4}return s}function calcModeScore(food){var s=0,mode=bodyModeRef.value;if(mode==='fat_loss'){if(getTag(food,'饱腹')==='轻食')s+=8;if(getTag(food,'饱腹')==='顶饱')s-=6;if(getTag(food,'口味')==='降火/清淡')s+=5;if(getTag(food,'口味')==='上火/热气')s-=5;if(getTag(food,'荤素')==='素')s+=4;if(getTag(food,'荤素')==='荤')s-=3;if(getTag(food,'品类')==='小食')s+=3;if(getTag(food,'品类')==='主食')s-=2}if(mode==='muscle'){if(getTag(food,'饱腹')==='顶饱')s+=8;if(getTag(food,'饱腹')==='轻食')s-=5;if(getTag(food,'荤素')==='荤')s+=6;if(getTag(food,'荤素')==='素')s-=3;if(getTag(food,'品类')==='主食')s+=5;if(getTag(food,'品类')==='小食')s-=3;if(getTag(food,'耗时')==='慢享')s+=3}return s}function getHealthLevel(food,hour){var score=calcTimeScore(food,hour)+calcModeScore(food),isLate=hour>=23||hour<6;if(isLate)return score>=6?{level:'o',label:'及格'}:{level:'b',label:'不健康'};return score>=8?{level:'g',label:'健康'}:score>=0?{level:'o',label:'及格'}:{level:'b',label:'不健康'}}function recordFoodEntry(food){var now=new Date(),hour=now.getHours(),hl=getHealthLevel(food,hour),dateStr=fmtDate(now);historyEntries.value.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),date:dateStr,time:hour.toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0'),food:food.name,emoji:getEmoji(food.name),healthLevel:hl.level,healthLabel:hl.label,isLate:hour>=23||hour<6,weather:weatherRef.value.condition,form:getTag(food,'形态'),taste:getTag(food,'口味'),distance:getTag(food,'距离'),duration:getTag(food,'耗时')});
+  if(historyEntries.value.length>200){historyEntries.value.splice(0,historyEntries.value.length-200)}
+}function recordByName(foodName){var food=foodsRef.value.find(function(f){return f.name===foodName});if(!food)return;recordFoodEntry(food)}function removeHistoryEntry(id){historyEntries.value=historyEntries.value.filter(function(e){return e.id!==id})}var manualInput=ref(''),manualItems=ref([]),manualSaveOk=ref(false),manualFocused=ref(true);var manualSuggestions=computed(function(){if(!manualInput.value.trim())return[];var q=manualInput.value.trim().toLowerCase();return foodsRef.value.filter(function(f){return f.name.toLowerCase().indexOf(q)>=0&&!manualItems.value.find(function(m){return m.name===f.name})}).slice(0,5)});var blurManual=function(){setTimeout(function(){manualFocused.value=false},200)};var addManualSuggestion=function(food){if(!manualItems.value.find(function(x){return x.name===food.name}))manualItems.value.push(Object.assign({},food,{emoji:getEmoji(food.name)}));manualInput.value='';manualFocused.value=true};var addManualCustom=function(){var name=manualInput.value.trim();if(!name||manualItems.value.find(function(x){return x.name===name})){manualInput.value='';return}var existing=foodsRef.value.find(function(f){return f.name===name});if(existing)manualItems.value.push(Object.assign({},existing,{emoji:getEmoji(existing.name)}));else manualItems.value.push(Object.assign({name:name,'距离':'步行/外卖',emoji:getEmoji(name)},autoTag(name)));manualInput.value='';manualFocused.value=true};var removeManualItem=function(index){manualItems.value.splice(index,1)};var saveManualMeal=function(){if(!manualItems.value.length)return;manualItems.value.forEach(recordFoodEntry);manualItems.value=[];manualInput.value='';manualSaveOk.value=true;setTimeout(function(){manualSaveOk.value=false},1800)};function computeStats(entries){var total=entries.length,lateCount=entries.filter(function(e){return e.isLate}).length,goodCount=entries.filter(function(e){return e.healthLevel==='g'}).length,badCount=entries.filter(function(e){return e.healthLevel==='b'}).length;var freqMap={};entries.forEach(function(e){freqMap[e.food]=(freqMap[e.food]||0)+1});var freqList=Object.entries(freqMap).map(function(entry){return{name:entry[0],cnt:entry[1],emoji:getEmoji(entry[0]),pct:0}}).sort(function(a,b){return b.cnt-a.cnt}).slice(0,6);if(freqList.length){var maxCnt=freqList[0].cnt;freqList.forEach(function(f){f.pct=Math.round(f.cnt/maxCnt*100)})}var dayMap={},dayLabels=['日','一','二','三','四','五','六'];entries.forEach(function(e){if(!dayMap[e.date]){var d=new Date(e.date);dayMap[e.date]={date:e.date,label:e.date.slice(5)+' 周'+dayLabels[d.getDay()],entries:[]}}dayMap[e.date].entries.push(e)});return{total:total,lateCount:lateCount,goodCount:goodCount,badCount:badCount,freqList:freqList,byDate:Object.values(dayMap).sort(function(a,b){return b.date.localeCompare(a.date)}),healthRate:total>0?Math.round(goodCount/total*100):0}}var weekStats=computed(function(){return computeStats(historyEntries.value.filter(function(e){return new Date(e.date)>=new Date(Date.now()-7*864e5)}))});var monthStats=computed(function(){return computeStats(historyEntries.value.filter(function(e){return e.date.startsWith(fmtMonth(new Date()))}))});return{historyEntries,recordByName,removeHistoryEntry,manualInput,manualItems,manualSuggestions,manualFocused,blurManual,addManualSuggestion,addManualCustom,removeManualItem,saveManualMeal,manualSaveOk,weekStats,monthStats,calcTimeScore,calcModeScore}}
+
+function useSeasonal(weatherRef){
+  var currentMonth=computed(function(){return new Date().getMonth()+1});
+  var monthCulture=computed(function(){return SEASONAL_DATA[currentMonth.value]||null});
+  var activeConditions=computed(function(){
+    var month=currentMonth.value,data=SEASONAL_DATA[month];
+    if(!data)return[];
+    var now=new Date(),day=now.getDate(),w=weatherRef.value,results=[];
+    data.entries.forEach(function(entry){
+      var dayOk=(!entry.dayFrom||day>=entry.dayFrom)&&(!entry.dayTo||day<=entry.dayTo);
+      if(!dayOk)return;
+      if(entry.weather){
+        var temp=parseFloat(w.temp)||25;
+        if(entry.weather==='rain'&&(w.condition!=='下雨'&&w.condition!=='大雨'))return;
+        if(entry.weather==='hot'&&temp<=33)return;
+        if(entry.weather==='cold'&&temp>=12)return;
+      }
+      results.push(entry);
+    });
+    return results;
+  });
+  var seasonBanner=computed(function(){
+    var conds=activeConditions.value;
+    for(var i=conds.length-1;i>=0;i--){if(conds[i].banner)return conds[i].banner}
+    return null;
+  });
+  function calcSeasonScore(food){
+    var s=0;
+    activeConditions.value.forEach(function(entry){
+      if(!entry.weights)return;
+      Object.keys(entry.weights).forEach(function(key){
+        var parts=key.split(':');
+        if(TAG_DIMS.indexOf(parts[0])>=0&&parts.length===2){
+          if(getTag(food,parts[0])===parts[1])s+=entry.weights[key];
+        }else{
+          if(food.name.indexOf(key)>=0)s+=entry.weights[key];
+        }
+      });
+    });
+    return s;
+  }
+  return{currentMonth,monthCulture,seasonBanner,calcSeasonScore};
+}
+
+function useDecisionFlow(foodsRef,bodyModeRef,weatherRef,historyRef,calcSeasonScore){var phase=ref('idle'),healthPanel=ref({});var currentTimeStr=computed(function(){var n=new Date();return n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0')});function buildHealthPanel(){var hour=new Date().getHours(),recommendations=[],recVerdict='g';if(foodsRef.value.length){var scored=foodsRef.value.map(function(f){return{name:f.name,score:historyRef.calcTimeScore(f,hour)+historyRef.calcModeScore(f)+calcRepeatPenalty(f.name,historyRef.historyEntries.value)+calcSeasonScore(f),emoji:getEmoji(f.name)}});scored.sort(function(a,b){return b.score-a.score});var maxScore=scored[0]?scored[0].score:0;var withPct=scored.map(function(f){return Object.assign({},f,{pct:maxScore>0?Math.max(0,Math.round(f.score/maxScore*100)):50})});
+    var good=withPct.filter(function(f){return f.pct>=60}).slice(0,3);
+    var ok=withPct.filter(function(f){return f.pct>=35&&f.pct<60}).slice(0,3);
+    var bad=withPct.filter(function(f){return f.pct<35}).slice(0,3);
+    if(good.length)recommendations.push({pct:60,items:good,cls:'g'});
+    if(ok.length)recommendations.push({pct:35,items:ok,cls:'o'});
+    if(bad.length)recommendations.push({pct:0,items:bad,cls:'b'});
+    if(good.length===0&&ok.length===0)recVerdict='b';
+    else if(good.length===0)recVerdict='o'
+  }
+  var quotes,panel,hour=new Date().getHours();
+  if(hour>=23||hour<4){quotes=pickRandom(HEALTH_QUOTES.late);panel={emoji:'🌙',title:'这会儿吃是给身体加夜班',fallback:'温牛奶/半碗粥',body:quotes.b,tip:quotes.t}}
+  else if(hour>=4&&hour<6){quotes=pickRandom(HEALTH_QUOTES.dawn);panel={emoji:'🌑',title:'凌晨进食打乱生长激素',fallback:'白开水',body:quotes.b,tip:quotes.t}}
+  else if(hour>=6&&hour<9){quotes=pickRandom(HEALTH_QUOTES.breakfast);panel={emoji:'🌅',title:'早餐是全天能量的地基',fallback:'蛋+豆浆/白粥配杂咸',body:quotes.b,tip:quotes.t}}
+  else if(hour>=9&&hour<11){quotes=pickRandom(HEALTH_QUOTES.morning);panel={emoji:'☀️',title:'上午加餐是减肥大敌',fallback:'喝水/茶',body:quotes.b,tip:quotes.t}}
+  else if(hour>=11&&hour<14){quotes=pickRandom(HEALTH_QUOTES.lunch);panel={emoji:'🍜',title:'午餐是能量中继站',fallback:'饭+肉+菜',body:quotes.b,tip:quotes.t}}
+  else if(hour>=14&&hour<17){quotes=pickRandom(HEALTH_QUOTES.afternoon);panel={emoji:'🫖',title:'下午茶挑着吃',fallback:'酸奶+水果',body:quotes.b,tip:quotes.t}}
+  else if(hour>=17&&hour<20){quotes=pickRandom(HEALTH_QUOTES.dinner);panel={emoji:'🍽️',title:'晚餐宜早宜清淡',fallback:'鱼饭配粥',body:quotes.b,tip:quotes.t}}
+  else{quotes=pickRandom(HEALTH_QUOTES.evening);panel={emoji:'🌙',title:'这会儿吃是给身体加夜班',fallback:'温牛奶/半碗粥',body:quotes.b,tip:quotes.t}}
+  panel.recommendations=recommendations;panel.recVerdict=recVerdict;return panel
+}
+
+var questionIndex=ref(0),candidates=ref([]),currentQuestion=ref({}),finalResult=ref(''),resultAccepted=ref(false),allCandidates=ref([]);
+var questions=[
+  {text:'想吃主食还是小食/饮品？',key:'品类',options:['主食','小食','饮品','都行']},
+  {text:'想吃荤还是素？',key:'荤素',options:['荤','素','荤素','都行']},
+  {text:'想顶饱还是解馋/轻食？',key:'饱腹',options:['顶饱','解馋','轻食','都行']},
+  {text:'想吃带汤还是干炒？',key:'形态',options:['带汤','干炒','都行']},
+  {text:'想吃降火还是上火？',key:'口味',options:['降火/清淡','上火/热气','都行']},
+  {text:'想步行/外卖还是去近/远？',key:'距离',options:['步行/外卖','近','远','都行']},
+  {text:'想快餐还是慢享？',key:'耗时',options:['快餐','慢享','都行']}
+];
+
+var resultEmoji=computed(function(){return getEmoji(finalResult.value.replace(' (系统推荐)',''))});
+
+var calcWeatherScore=function(food){
+  var s=0;
+  if(weatherRef.value.isBad){if(getTag(food,'距离')==='远')s-=10;if(getTag(food,'距离')==='步行/外卖')s+=5}
+  var temp=parseFloat(weatherRef.value.temp)||25;
+  if(temp>30){if(getTag(food,'口味')==='降火/清淡')s+=5;if(getTag(food,'口味')==='上火/热气')s-=5}
+  else if(temp<15){if(getTag(food,'口味')==='上火/热气')s+=5;if(getTag(food,'形态')==='带汤')s+=3}
+  return s
+};
+
+var otherChoices=computed(function(){
+  var top=finalResult.value.replace(' (系统推荐)','');
+  return allCandidates.value.filter(function(f){return f.name!==top}).slice(0,6)
+});
+
+var switchToChoice=function(food){finalResult.value=food.name;resultAccepted.value=false};
+
+var startDecision=function(){healthPanel.value=buildHealthPanel();phase.value='health'};
+
+var goToQuestions=function(){
+  phase.value='decide';questionIndex.value=0;
+  candidates.value=foodsRef.value.map(function(f){
+    return Object.assign({},f,{score:calcWeatherScore(f)+historyRef.calcModeScore(f)+calcRepeatPenalty(f.name,historyRef.historyEntries.value)+calcSeasonScore(f)})
+  });
+  currentQuestion.value=questions[0];
+  if(candidates.value.length<=1)finalizeDecision()
+};
+
+var answerQuestion=function(answer){
+  var q=questions[questionIndex.value];
+  if(answer!=='都行'){
+    candidates.value=candidates.value.filter(function(f){
+      if(q.key==='距离'){
+        if(answer==='步行/外卖')return getTag(f,'距离')==='步行/外卖';
+        if(answer==='近')return getTag(f,'距离')==='步行/外卖'||getTag(f,'距离')==='近';
+        if(answer==='远')return getTag(f,'距离')==='远';
+        return true
+      }
+      return getTag(f,q.key)===answer||getTag(f,q.key)==='适中'
+    })
+  }
+  
+  questionIndex.value++;
+  while(questionIndex.value < questions.length) {
+    var nextQ = questions[questionIndex.value];
+    var values = candidates.value.map(function(f){ return getTag(f, nextQ.key); });
+    if(new Set(values).size > 1) {
+      currentQuestion.value = nextQ;
+      break;
+    }
+    questionIndex.value++;
+  }
+
+  if(questionIndex.value>=questions.length||candidates.value.length<=1)finalizeDecision();
+};
+
+var finalizeDecision=function(){
+  phase.value='result';resultAccepted.value=false;
+  if(!candidates.value.length){
+    var all=foodsRef.value.map(function(f){
+      return Object.assign({},f,{score:calcWeatherScore(f)+historyRef.calcModeScore(f)+calcRepeatPenalty(f.name,historyRef.historyEntries.value)+calcSeasonScore(f)})
+    });
+    all.sort(function(a,b){return b.score-a.score});
+    allCandidates.value=all;
+    finalResult.value=(all.length?all[0].name:'没有了')+' (系统推荐)'
+  }else{
+    candidates.value.sort(function(a,b){return b.score-a.score});
+    allCandidates.value=candidates.value.slice();
+    finalResult.value=candidates.value[0].name
+  }
+};
+
+var acceptResult=function(){
+  historyRef.recordByName(finalResult.value.replace(' (系统推荐)',''));
+  resultAccepted.value=true
+};
+
+var rejectResult=function(){phase.value='idle'};
+
+var resetDecision=function(){phase.value='idle';resultAccepted.value=false};
+
+return{phase,healthPanel,currentTimeStr,startDecision,goToQuestions,questions,questionIndex,currentQuestion,candidates,answerQuestion,resultEmoji,finalResult,resultAccepted,otherChoices,switchToChoice,acceptResult,rejectResult,resetDecision}
+}
+
+createApp({setup(){
+  var page=ref('home')
+  var statsTab=ref('week')
+  var theme=useTheme()
+  var profile=useProfile()
+  var weather=useWeather()
+  var food=useFood()
+  var history=useHistory(food.foods,weather.weather,profile.bodyMode)
+  var seasonal=useSeasonal(weather.weather)
+  var decision=useDecisionFlow(food.foods,profile.bodyMode,weather.weather,history,seasonal.calcSeasonScore)
+  var showCultureDetail=ref(false)
+  var showGuide=ref(false)
+
+  var rankInfo=computed(function(){
+    var total=history.monthStats.value.total,
+    modeLabel=profile.bodyMode.value==='fat_loss'?'🔥减脂':profile.bodyMode.value==='muscle'?'💪增肌':'🌿自然';
+    return(total>=31?'👑宗师':total>=16?'🏆专家':total>=6?'🍽️达人':'🌱新手')+' · '+modeLabel
+  });
+
+  var lastViewedVer=ref(localStorage.getItem('app_ver')||'')
+  var hasNewVersion=computed(function(){return lastViewedVer.value!==APP_VERSION})
+  var showChangelog=ref(false)
+  var viewChangelog=function(){
+    showChangelog.value=!showChangelog.value;
+    if(hasNewVersion.value){lastViewedVer.value=APP_VERSION;safeWrite('app_ver',APP_VERSION)}
+  }
+
+  var exportData=function(){
+    var data={foods:food.foods.value,combos:food.combos.value,history:history.historyEntries.value,gender:profile.gender.value,bodyMode:profile.bodyMode.value,version:DATA_VERSION,timestamp:new Date().toISOString()};
+    var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');a.href=url;a.download='干饭指南-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(url)
+  }
+
+  var importData=function(ev){
+    var file=ev.target.files[0];if(!file)return;
+    var reader=new FileReader;
+    reader.onload=function(e){
+      try{
+        var data=JSON.parse(e.target.result);
+        if(!data||typeof data!=='object'){alert('格式错误：不是有效对象');return}
+        if(data.foods&&Array.isArray(data.foods)){var ver=data.version||0;food.foods.value=migrateFoods(data.foods,ver)}
+        if(data.combos&&Array.isArray(data.combos))food.combos.value=data.combos;
+        if(data.history&&Array.isArray(data.history))history.historyEntries.value=data.history;
+        if(data.gender){profile.gender.value=data.gender;safeWrite('sg',data.gender)}
+        if(data.bodyMode){profile.bodyMode.value=data.bodyMode;safeWrite('swmd',data.bodyMode)}
+        alert('导入成功！')
+      }catch(err){alert('格式错误：'+err.message)}
+    };
+    reader.readAsText(file);ev.target.value=''
+  }
+
+  return{
+    page,statsTab,
+    currentTheme:theme.currentTheme,themeList:theme.themeList,setTheme:theme.setTheme,
+    gender:profile.gender,setGender:profile.setGender,bodyMode:profile.bodyMode,setBodyMode:profile.setBodyMode,modeLabel:profile.modeLabel,modeTip:profile.modeTip,greetingText:profile.greetingText,greetingEmoji:profile.greetingEmoji,rankInfo,
+    weather:weather.weather,
+    foods:food.foods,newFoodName:food.newFoodName,currentDist:food.currentDist,addFood:food.addFood,cycleTag:food.cycleTag,removeFood:food.removeFood,toggleDist:food.toggleDist,foodGroups:food.foodGroups,selectedFoods:food.selectedFoods,toggleSelect:food.toggleSelect,isGroupSelected:food.isGroupSelected,toggleGroupSelect:food.toggleGroupSelect,selectedCount:food.selectedCount,combos:food.combos,comboName:food.comboName,saveCombo:food.saveCombo,loadCombo:food.loadCombo,loadComboAndSwitch:food.loadComboAndSwitch,removeCombo:food.removeCombo,showManage:food.showManage,
+    historyEntries:history.historyEntries,getEmoji:getEmoji,manualInput:history.manualInput,manualItems:history.manualItems,manualSuggestions:history.manualSuggestions,manualFocused:history.manualFocused,blurManual:history.blurManual,addManualSuggestion:history.addManualSuggestion,addManualCustom:history.addManualCustom,removeManualItem:history.removeManualItem,saveManualMeal:history.saveManualMeal,manualSaveOk:history.manualSaveOk,removeHistoryEntry:history.removeHistoryEntry,weekStats:history.weekStats,monthStats:history.monthStats,
+    phase:decision.phase,healthPanel:decision.healthPanel,currentTimeStr:decision.currentTimeStr,startDecision:decision.startDecision,goToQuestions:decision.goToQuestions,questions:decision.questions,questionIndex:decision.questionIndex,currentQuestion:decision.currentQuestion,candidates:decision.candidates,answerQuestion:decision.answerQuestion,resultEmoji:decision.resultEmoji,finalResult:decision.finalResult,resultAccepted:decision.resultAccepted,otherChoices:decision.otherChoices,switchToChoice:decision.switchToChoice,acceptResult:decision.acceptResult,rejectResult:decision.rejectResult,resetDecision:decision.resetDecision,
+    currentMonth:seasonal.currentMonth,monthCulture:seasonal.monthCulture,seasonBanner:seasonal.seasonBanner,showCultureDetail:showCultureDetail,
+    hasNewVersion:hasNewVersion,showChangelog:showChangelog,changelog:CHANGELOG,viewChangelog:viewChangelog,
+    exportData:exportData,importData:importData,
+    showGuide:showGuide,
+    TAG_DEFAULTS:TAG_DEFAULTS,TAG_DIMS:TAG_DIMS
+  }
+}}).mount('#app')
+</script>
+</body>
+</html>
